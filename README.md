@@ -1,70 +1,77 @@
-# Mouth-Operated Mouse V3
+# Open-Mouth-Mouse 
 
-An open-source, affordable assistive technology project that enables computer control through mouth movements and sip/puff actions. This is an updated version of the original Mouth-Operated Mouse, now utilizing an Arduino Leonardo for direct HID (Human Interface Device) emulation and an enhanced Python application for calibration and training.
+An open-source, affordable assistive technology project that enables computer control through mouth movements and sip/puff actions. This is an updated version of the original Mouth-Operated Mouse, that has been toughened up with a custom pcb and more robust case in order to be deployed for daily use by tetraplegics. This project was developed for the ParaWork team at the Swiss Paraplegic Centre in oder to enable quick access to this type of assistive device, bypassing the need to involve insurance companies.
 
 ## Overview
 
-This project creates a mouth-operated mouse combining a pressure sensor for sip/puff actions with a joystick for cursor movement, allowing users with limited hand mobility to control a computer. A keyboard mode is also included, where 2 to 8 keybinds are assigned to different angles, and special keys can be binded to sips and puffs. The device functions as follows:
+This project creates a mouth-operated mouse combining a pressure sensor for sip/puff actions with a joystick for cursor movement, allowing users with limited hand mobility to control a computer. A keyboard mode is also included, where 2 to 8 keybinds are assigned to different angles, and special keys can be bound to sips and puffs. The mouse functions as follows:
 
 *   **Joystick**: Controls cursor movement (operated by mouth)
-*   **Sip/Puff Actions**:
-    *   Hard sip → Right click
-    *   Soft sip → Scroll down
+*   **Sip/Puff Actions**: 
+    *   Hard puff → Right click
+    *   Soft puff → Scroll down
     *   Neutral → No action
-    *   Soft puff → Scroll up
-    *   Hard puff → Left click
+    *   Soft sip → Scroll up
+    *   Hard sip → Left click
+These controls are inverted from the previous version because users requested it.
 
-## Key Features of V3
+## Upgrades over the main V3
 
-*   **Arduino Leonardo Integration**: Direct USB HID emulation, eliminating the need for a separate Python script for mouse control on the computer side. The Arduino Leonardo can act directly as a mouse.
-*   **Enhanced Python Application (`App.py`)**: A comprehensive GUI application built with `customtkinter` for:
-    *   **Tuning & Profiles**: Adjust pressure thresholds and joystick sensitivity, save and load custom profiles.
-    *   **Trainer**: Interactive exercises to improve sip/puff and joystick control accuracy.
-    *   **Calibrate Sensor**: Visualize real-time pressure data and assist in setting optimal thresholds.
-    *   **Stick Control**: Visual representation of joystick input and deadzone.
-
-*   **Improved Responsiveness**: Direct HID communication from Arduino Leonardo offers lower latency.
-*   **Modular Design**: Easy customization and integration of components.
+*   **Custom PCB**: The circuit now no longer needs to be completely hand soldered, only the components need to be attached.
+*   **Improved case**: The case is now more robust and has a pressed in 1/4 nut to allow for attaching to standard multi arms.
 
 ## Components
 
-1.  **Arduino pro micro** (~$1.53 AUD)
+1.  **Arduino pro micro** (~$1 USD)
     *   Replaces Arduino Uno and Leonardo for direct HID capabilities and a more compact design.
-2.  **NPA-300B-001G (Most NPA pressure sensor models will work)** (~$2.8 to 54 AUD)
+    *   Pinout must match the SparkFun Electronics version in order to fit in PCB, there are many on aliexpress that fit this requirement.
+2. **Custom PCB** (~$1 USD per board + $5-$20 shipping
+    *   Hand the gerber files to one of the large manufacturers, the total price per delivered pcb obviously goes down as you order more, so consider doing a batch production.
+3.  **NPA-500B-001G** (~$30 USD)
     *    - Specifically designed for sip/puff applications
-         - Note that most models operated imilarly, meaning that there is no point in buying the more expensive models of the NPA sensors
-3.  **Joystick Module**
-    *   Analog Thumb Joystick Module (~$0.35 AUD)
-4.  **Tubing and Mouthpiece:**
-    *   Food-grade silicone tubing 1 meter - 2mm x 3mm (~$1.39 AUD) 
-5.  **3d Printed parts**
-    *   Mouthpeice, Casing, and arm (Cost varies, but estimated around 35 AUD)
-5.  **Soldering Components:**
-    *   3cm x 7cm proto board (~$0.14 AUD)
-    *   Basic soldering stuff, wires, solder, flux (Cost varies, estimated around 2 to 3 AUD for me)
-    *   USB to USB-C cable for Arduino (~$0.73 AUD)
-    *   1 micro farad capacitor (~$0.16 AUD)
-    *   DIP14 PCB Adapter Plate (~$0.55 AUD)
+         - I have tested another sensor but it didn't behave similarly to the NPA sensor, more testing needed to find the correct affordable version. This is where the most improvement in price can still be found.
+4.  **PS4 Thumb Joystick** (~$1 USD)
+    *   The PCB fits a PS4 thumb joystick, ideally chose a TMR magnetic version to allow for more precision and setting a smaller deadzone.
+5.  **Tubing** (~$1 USD)
+    *   Food-grade silicone tubing 1 meter - 2mm x 3mm 
+6.  **3d Printed parts**
+    *   Mouthpeice and Casing (Cost varies, ideally the maker has their own printer or access to one)
+7.  **Soldering Components:**
+    *   Basic soldering stuff, solder, flux (fluxed solder works too, make sure you have a fine tip)
+    *   USB to USB-C cable for Arduino (~$1 USD)
+    *   1 micro farad capacitor (~$0.1 USD)
+8. **Small M3 Screws**
+    *   Just some short m3 screws of any type
     
-**Estimated Total Cost:** Approximately $45 AUD not including shipping, cost varies from country to country
+**Estimated Total Cost:** Approximately $40 USD not including shipping, cost varies from country to country and quantity of party ordered.
 
 ## Setup Instructions
 
-### 1. Hardware Assembly
+### 1. PCB Assembly
 
-Follow these basic instructions:
+Follow this order for soldering to the board:
 
-*   **Pressure Sensor (NPA-300B-001G) Connections:**
-    *   VSS/Pin 6  → Arduino GND and VDD/Pin 9 through a 1 microfarad capacitor
-    *   VDD/Pin 9  → Arduino +2.7 to +5.5V
-    *   SIG/Pin 8 → Arduino A0
-*   **Joystick Module Connections:**
-    *   GND pin → Arduino GND 
-    *   +5V pin → Arduino 5V (Connect with the Pressure sensor VDD/Pin 9 connection)
-    *   VRx (X-axis) → Arduino A1
-    *   VRy (Y-axis) → Arduino A2
-    *   SW (Switch, optional) → Not used, but can be connected to a digital pin if desired
-*   **Tubing Connection:**
+*   **Pressure sensor**
+    *   Start with this as it will be difficult once the other components are attached.
+    *   Follow [this tutorial](https://youtu.be/EW9Y8rDm4kE?si=filJ9XeB6xgZvDsz&t=374) to solder the pressure sensor, this is the trickiest part to do but just be patient and it will be fine.
+    *   Dont forget to check that the orientation of the chip is correct by matching the dot in the corner to the one on the pcb.
+    *   Even if only 3 pins are necessary for the sensor to function, you should still solder all of the pins otherwise it will be too weakly attached.
+*   **Through hole components**
+    *   Now you can solder all of the other components to the board, the order is not important. As they are all through-hole components the technique for doing so is the same for all of them [here is a tutorial](https://youtu.be/vAx89WhpZ3k?si=IwgAvfRAVOeoopeO) if you are unsure.
+      
+### 2. Arduino IDE Setup
+
+1.  **Install Arduino IDE**: Download and install the Arduino IDE from the [official website](https://www.arduino.cc/en/software).
+2.  **Install Arduino Pro Micro Board**: Go to `Tools > Board > Boards Manager...` and search for "Arduino AVR Boards". Install the package that includes the Arduino Leonardo.
+3.  **Install Libraries**: The `V3.ino` sketch uses the built-in `Mouse.h` library. No additional library installations are required for the Arduino sketch.
+4.  **Upload Sketch**: Open `V3.ino` in the Arduino IDE, select `Tools > Board > Arduino Pro Micro`, and choose the correct `Port`. Then, click `Upload`.
+
+
+----------WIP Beyond here----------
+
+### 3.
+
+    
     *   Connect silicon food-grade tubing to the pressure port on the sensor, there are 2 pressure ports for most models, the one further away from the dot in the corner should be the one you connect to, the other one inverts sips and puffs
     *   Thread your tubing through the hole on top of the casing
     *   Connect your mouthpiece to the joystick shaft
@@ -79,13 +86,6 @@ Follow these basic instructions:
     *   Some model of the sensors, such as the one used for this project (NPA-300B-001G) has an uneven pressure detection range, meaning that it can detect stronger puffs and weaker sips, this can cause the sips to be very sensitive, so much so that it is very difficult to control the soft and hard sips, to fix this, simple poke a few holes in the tubing
     *   Remember to connect capacitor with correct polarity if you are using an electrolytic capacitor
 
-### 2. Arduino IDE Setup
-
-1.  **Install Arduino IDE**: Download and install the Arduino IDE from the [official website](https://www.arduino.cc/en/software).
-2.  **Install Arduino Pro Micro Board**: Go to `Tools > Board > Boards Manager...` and search for "Arduino AVR Boards". Install the package that includes the Arduino Leonardo.
-3.  **Install Libraries**: The `V3.ino` sketch uses the built-in `Mouse.h` library. No additional library installations are required for the Arduino sketch.
-4.  **Upload Sketch**: Open `V3.ino` in the Arduino IDE, select `Tools > Board > Arduino Pro Micro`, and choose the correct `Port`. Then, click `Upload`.
-
 ### 3. Python Application Setup
 
 1.  **Install Python**: Ensure you have Python 3.x installed. You can download it from [python.org](https://www.python.org/downloads/).
@@ -97,7 +97,6 @@ Follow these basic instructions:
     ```bash
     python App.py
     ```
-
 ## Usage
 
 Once the Arduino sketch is uploaded and the Python application is running, you can use the `App.py` interface to:
@@ -119,9 +118,8 @@ Once the Arduino sketch is uploaded and the Python application is running, you c
 
 *  **There is no need to print the CZFA_FlexFrame_PhoneMount.stl, as that is a phone stand, instead, you are connecting the screw that was suppose to join the phone holder and the arm/stand to the casing instead
 
-## Link for video guides:
+## Link for video guide:
 
-* Hardware: https://youtu.be/UBpAdc31Nfw
 * Software: https://youtu.be/A-l-xfMGubU
 
 ## 🛠️ OSHWA Certification
