@@ -39,7 +39,7 @@ These controls are inverted from the previous version because users requested it
 7.  **Soldering Components:**
     *   Basic soldering stuff, solder, flux (fluxed solder works too, make sure you have a fine tip)
     *   USB to USB-C cable for Arduino (~$1 USD)
-    *   1 micro farad capacitor (~$0.1 USD)
+    *   1uf electrolytic capacitor (~$0.1 USD)
 8. **Small M3 Screws**
     *   Just some short m3 screws of any type
     
@@ -58,6 +58,8 @@ Follow this order for soldering to the board:
     *   Even if only 3 pins are necessary for the sensor to function, you should still solder all of the pins otherwise it will be too weakly attached.
 *   **Through hole components**
     *   Now you can solder all of the other components to the board, the order is not important. As they are all through-hole components the technique for doing so is the same for all of them [here is a tutorial](https://youtu.be/vAx89WhpZ3k?si=IwgAvfRAVOeoopeO) if you are unsure.
+    *   Remember to connect the capacitor with correct polarity.
+
       
 ### 2. Arduino IDE Setup
 
@@ -66,25 +68,24 @@ Follow this order for soldering to the board:
 3.  **Install Libraries**: The `V3.ino` sketch uses the built-in `Mouse.h` library. No additional library installations are required for the Arduino sketch.
 4.  **Upload Sketch**: Open `V3.ino` in the Arduino IDE, select `Tools > Board > Arduino Pro Micro`, and choose the correct `Port`. Then, click `Upload`.
 
+### 3. Case Assembly
 
-----------WIP Beyond here----------
-
-### 3.
-
-    
-    *   Connect silicon food-grade tubing to the pressure port on the sensor, there are 2 pressure ports for most models, the one further away from the dot in the corner should be the one you connect to, the other one inverts sips and puffs
-    *   Thread your tubing through the hole on top of the casing
-    *   Connect your mouthpiece to the joystick shaft
-    *   The other end of the tubing connects to the hole on the mouthpiece, make sure the hole on the mouthpeice is facing upwards
-*   **Casing** 
-    *   Make sure everything works first, and that the joystick has enough angle of movement
-    *   Assemble the 3d printed arm/stand (link at the bottom of this file) with the final screw connecting the casing with the 3d printed arm/stand
-    *   Once everything works, connect your cable to the arduino, and slide the cover over the open side of the casing
-
-*   **Tips and advices**
-    *   Depending on your 3d printer settings, some of the components might not fit, simply sand down the parts that are too big or too tight, such as the thin part of the sliding cover, or the screw and screw hole, DO NOT SAND DOWN yOUR MOUTHPEICE, you do not want to breathe in the fiament dust, if the hole does not fit on the hatch, you can use a small screwdriver and apply force to the hole and expand it a bit.
-    *   Some model of the sensors, such as the one used for this project (NPA-300B-001G) has an uneven pressure detection range, meaning that it can detect stronger puffs and weaker sips, this can cause the sips to be very sensitive, so much so that it is very difficult to control the soft and hard sips, to fix this, simple poke a few holes in the tubing
-    *   Remember to connect capacitor with correct polarity if you are using an electrolytic capacitor
+*   **Lower Casing**
+    *   Press the 1/4 nut into the hole in the lower casing, it should be set deep enough that the screw on whatever arm you are using can grab onto it.
+    *   Place the PCB inside of the case with the joystick sitting above the nut.
+    *   Fasten the PCB in place with 4 short m3 screws.
+*   **Mouthpiece**
+    *   Cut a piece of the silicon food-grade tubing about 10 cm long.
+    *   Connect the tubing to the pressure port on the sensor, there are 2 pressure ports for most models, the one closer to the dot in the corner should be the one you connect to, the other one inverts sips and puffs.
+    *   The other end of the tubing connects to the hole on the mouthpiece.
+    *   Place the mouthpiece on the joystick.
+    *   At this poimt the mouse should already be functional, plug it in and try it out to check. If not do the troubleshooting now before you close it up.
+*   **Upper Casing**
+    *   Temporarily remove the tube from the mouthpiece.
+    *   Thread your tubing through the small hole on the top half of the casing.
+    *   Then place the top case ontop of the lower and press it down.
+    *   Fasten the parts together with 4 more m3 screws.
+    *   Reattach the tube to the mouthpiece.
 
 ### 3. Python Application Setup
 
@@ -113,10 +114,6 @@ Once the Arduino sketch is uploaded and the Python application is running, you c
 *   **Serial Communication Issues**: Verify that no other application is using the serial port. Restarting the Arduino IDE or `App.py` might help.
 *   **Mouse Not Moving/Clicking**: Check the pressure sensor and joystick connections. Ensure the `V3.ino` sketch is successfully uploaded to the Arduino Leonardo.
 *   **Calibration**: The pressure thresholds are highly dependent on your specific sensor and lung capacity. Use the "Calibrate Sensor" tab in `App.py` to find your optimal settings.
-
-## Link for 3d printed arm/stand: https://www.printables.com/model/647794-flexible-sturdy-phone-arm-100-printed/files
-
-*  **There is no need to print the CZFA_FlexFrame_PhoneMount.stl, as that is a phone stand, instead, you are connecting the screw that was suppose to join the phone holder and the arm/stand to the casing instead
 
 ## Link for video guide:
 
