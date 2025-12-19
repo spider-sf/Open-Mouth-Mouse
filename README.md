@@ -1,6 +1,6 @@
 # Open-Mouth-Mouse 
 
-An open-source, affordable assistive technology project that enables computer control through mouth movements and sip/puff actions. This is an updated version of the original Mouth-Operated Mouse, that has been toughened up with a custom pcb and more robust case in order to be deployed for daily use by tetraplegics. This project was developed for the ParaWork team at the Swiss Paraplegic Centre in oder to enable quick access to this type of assistive device, bypassing the need to involve insurance companies.
+An open-source, affordable assistive technology project that enables computer control through mouth movements and sip/puff actions. This is an updated version of the original Mouth-Operated Mouse, that has been toughened up with a custom pcb and more robust case in order to be deployed for daily use by tetraplegics. This project was developed for the ParaWork team at the Swiss Paraplegic Centre in order to enable quick access to this type of assistive device, bypassing the need to involve insurance companies.
 
 ## Overview
 
@@ -18,7 +18,7 @@ These controls are inverted from the previous version because users requested it
 ## Upgrades over the main V3
 
 *   **Custom PCB**: The circuit now no longer needs to be completely hand soldered, only the components need to be attached.
-*   **Improved case**: The case is now more robust and has a pressed in 1/4 nut to allow for attaching to standard multi arms.
+*   **Improved case**: The case is now more robust and has a pressed in 1/4 nut to allow for attaching to standard camera mounts.
 
 ## Components
 
@@ -31,7 +31,7 @@ These controls are inverted from the previous version because users requested it
     *    - Specifically designed for sip/puff applications
          - I have tested another sensor but it didn't behave similarly to the NPA sensor, more testing needed to find the correct affordable version. This is where the most improvement in price can still be found.
 4.  **PS4 Thumb Joystick** (~$1 USD)
-    *   The PCB fits a PS4 thumb joystick, ideally chose a TMR magnetic version to allow for more precision and setting a smaller deadzone.
+    *   The PCB fits a PS4 thumb joystick, ideally choose a TMR magnetic version to allow for more precision and setting a smaller deadzone.
 5.  **Tubing** (~$1 USD)
     *   Food-grade silicone tubing 1 meter - 2mm x 3mm 
 6.  **3d Printed parts**
@@ -43,7 +43,7 @@ These controls are inverted from the previous version because users requested it
 8. **Small M3 Screws**
     *   Just some short m3 screws of any type
     
-**Estimated Total Cost:** Approximately $40 USD not including shipping, cost varies from country to country and quantity of party ordered.
+**Estimated Total Cost:** Approximately $40 USD not including shipping, cost varies from country to country and quantity of parts ordered.
 
 ## Setup Instructions
 
@@ -53,7 +53,7 @@ Follow this order for soldering to the board:
 
 *   **Pressure sensor**
     *   Start with this as it will be difficult once the other components are attached.
-    *   Follow [this tutorial](https://youtu.be/EW9Y8rDm4kE?si=filJ9XeB6xgZvDsz&t=374) to solder the pressure sensor, this is the trickiest part to do but just be patient and it will be fine.
+    *   Follow [this tutorial](https://youtu.be/EW9Y8rDm4kE?si=filJ9XeB6xgZvDsz&t=374) to solder the pressure sensor, this is the trickiest part to do, just be patient and it will be fine.
     *   Dont forget to check that the orientation of the chip is correct by matching the dot in the corner to the one on the pcb.
     *   Even if only 3 pins are necessary for the sensor to function, you should still solder all of the pins otherwise it will be too weakly attached.
 *   **Through hole components**
